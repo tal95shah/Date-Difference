@@ -3,7 +3,7 @@ A simple utility function "Updated  X seconds/minutes/hours/days ago" for django
 
 ## Screenshot
 
-![Screenshot](https://github.com/tal95shah/LinkedIn_Scraper/blob/master/LinkedIn.PNG)
+![Screenshot](https://github.com/tal95shah/Date-Difference/blob/master/TIMEDIFF.PNG)
 
 ## About
 
