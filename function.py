@@ -1,3 +1,4 @@
+from datetime import datetime,timezone
 def timediff_custom(date_given,type_flag=['s']):
     """
     A function that calculates difference between two dates
