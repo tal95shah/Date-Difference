@@ -1,23 +1,39 @@
 from datetime import datetime,timezone
-def timediff_custom(date_given,type_flag=['s']):
+from math import floor
+def timediff_custom(date_given,type_flag=['s'],plural=[False]):
     """
-    A function that calculates difference between two dates
-    and returns the absolute difference in seconds/minutes
-    /hours/days 
+    A function used to check difference between modified/updated and current time
+    a handy function for use in apps.
     """
     a = date_given
     b = datetime.now(timezone.utc)
     c = b - a
-    if c.seconds >= 60:
+    timeToCheck= int(floor(c.total_seconds()))
+    if timeToCheck >= 60 and timeToCheck < 3600:
         type_flag.pop(0)
         type_flag.append('m')
-        return int(c.seconds/60)
-    elif c.seconds >=3600:
+        newTimeToCheck = int(floor(timeToCheck/60))
+        if newTimeToCheck > 1:
+            plural.pop(0)
+            plural.append(True)
+        return newTimeToCheck 
+    elif timeToCheck >=3600 and timeToCheck < 86400:
         type_flag.pop(0)
         type_flag.append('h')
-        return int(c.seconds/3600)
-    elif c.seconds >= 86400:
+        newTimeToCheck =int(floor(timeToCheck/3600))
+        if newTimeToCheck > 1:
+            plural.pop(0)
+            plural.append(True)
+        return newTimeToCheck
+    elif timeToCheck >= 86400:
         type_flag.pop(0)
         type_flag.append('d')
-        return int(c.seconds/86400)
-    return c.seconds
+        newTimeToCheck =int(floor(timeToCheck/86400))
+        if newTimeToCheck > 1:
+            plural.pop(0)
+            plural.append(True)
+        return newTimeToCheck
+    if timeToCheck>1:
+        plural.pop(0)
+        plural.append(True)
+    return int(floor(timeToCheck))
