@@ -1,12 +1,26 @@
 dte = #date to be compared with now() date
-t_flag = ['s'] # default flag 
-time_check=timediff_custom(dte,t_flag) # returns difference and changes t_flag
+t_flag = ['s'] # default flag
+p_flag=[False] # checks if plural value or not
+time_check=timediff_custom(dte,t_flag,p_flag) # returns difference and changes t_flag
+context = {}
 if t_flag[0] == 's':
-    retVal="Updated {} seconds ago.".format(time_check)
+    if p_flag[0] == True:
+        context['updated']="Updated {} seconds ago.".format(time_check)
+    else:
+        context['updated']="Updated {} second ago.".format(time_check)
 elif t_flag[0] == 'm':
-    retVal="Updated {} minutes ago.".format(time_check)
+    if p_flag[0] == True:
+        context['updated']="Updated {} minutes ago.".format(time_check)
+    else:
+        context['updated']="Updated {} minute ago.".format(time_check)
 elif t_flag[0] == 'h':
-    retVal="Updated {} hours ago.".format(time_check)
+    if p_flag[0] == True:
+        context['updated']="Updated {} hours ago.".format(time_check)
+    else:
+        context['updated']="Updated {} hour ago.".format(time_check)
 elif t_flag[0] == 'd':
-    retVal="Updated {} days ago.".format(time_check)
-#return retVal
+    if p_flag[0] == True:
+        context['updated']="Updated {} days ago.".format(time_check)
+    else:
+        context['updated']="Updated {} day ago.".format(time_check)
+ # use this context  
